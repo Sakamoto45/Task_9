@@ -13,7 +13,7 @@ public:
     node* left; //tree
     node* right; //tree
     node* next; //stack
-    
+
     node(char _c) {
         c = _c;
         left = NULL;
@@ -34,22 +34,22 @@ public:
             if (r == -1) return -1;
         }
         switch (c) {
-            case '+': return l || r;
-            case '*': return l && r;
-            case '!': return !l;
-            case '0': return 0;
-            case '1': return 1;
-            default: return -1;
+        case '+': return l || r;
+        case '*': return l && r;
+        case '!': return !l;
+        case '0': return 0;
+        case '1': return 1;
+        default: return -1;
         }
     }
 
     void print(int n) {
-        if (left != NULL) left->print(n+1);
+        if (left != NULL) left->print(n + 1);
         cout << setw(n * 2) << c << endl;
-        if (right != NULL) right->print(n+1);
+        if (right != NULL) right->print(n + 1);
     }
 
-    
+
 };
 
 class stack {
@@ -57,9 +57,9 @@ public:
 
     node* head;
 
-    stack(){
+    stack() {
         head = NULL;
-        
+
     }
 
     bool is_empty() {
@@ -70,7 +70,8 @@ public:
         node* temp = new node(_c);
         if (head == NULL) {
             head = temp;
-        } else {
+        }
+        else {
             temp->next = head;
             head = temp;
         }
@@ -81,17 +82,19 @@ public:
             node* temp = head;
             head = head->next;
             return temp->c;
-        } else {
+        }
+        else {
             return '?';
-        }   
+        }
     }
 
     char top() {
         if (head != NULL) {
             return head->c;
-        } else {
+        }
+        else {
             return '?';
-        } 
+        }
     }
 
 };
@@ -103,10 +106,12 @@ node* build(string pre, int* n) {
         *n = *n + 1;
         temp->left = build(pre, n);
         temp->right = build(pre, n);
-    } else if (pre[*n] == '!') {
+    }
+    else if (pre[*n] == '!') {
         *n = *n + 1;
         temp->left = build(pre, n);
-    } else {
+    }
+    else {
         *n = *n + 1;
     }
     return temp;
