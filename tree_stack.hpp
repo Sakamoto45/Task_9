@@ -26,11 +26,11 @@ public:
 
         int l, r;
         if (left != NULL) {
-            int l = left->solve();
+            l = left->solve();
             if (l == -1) return -1;
         }
         if (right != NULL) {
-            int r = right->solve();
+            r = right->solve();
             if (r == -1) return -1;
         }
         switch (c) {
